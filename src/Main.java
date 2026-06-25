@@ -10,5 +10,7 @@ public class Main {
         portTester2.testPort("443"); // This is calling the method testPort()
         portTester2.testIPaddress("127.0.0.1"); // This is calling the method testIPaddress()
 
+        portTester.printPortAndIPaddress("80", "127.0.0.1");
+
         }
     }

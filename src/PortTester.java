@@ -1,26 +1,25 @@
 public class PortTester {
 
     // Private variables
-    private String port;
-    private String ipAddress;
+    private String port = "No port specified";
+    private String ipAddress = "No IP address specified";
 
-    public void testPort(String port) {
-        port = port;
 
-    }
-    // Access modifier is public, Return type is void, Name is testIPaddress, Parameter is String ipAddress
-    public void testIPaddress(String ipAddress) {
-        ipAddress = ipAddress;
-
-    }
-
-    public void testPortAndIPaddress(String port, String ipAddress) {
-        testPort(port);
-        testIPaddress(ipAddress);
-    }
-
-    public void printPortAndIPaddress() {
+    public void printPortAndIPaddress(String port, String ipAddress) {
         System.out.println("Port: " + port + " IP Address: " + ipAddress + ", to be scanned");
+    }
+    // setters and getters
+    public void setPort(String port) {
+        port = port;
+    }
+    public void setIpAddress(String ipAddress) {
+        ipAddress = ipAddress;
+    }
+    public String getPort() {
+        return port;
+    }
+    public String getIpAddress() {
+        return ipAddress;
     }
 
 }
