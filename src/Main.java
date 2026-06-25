@@ -1,16 +1,47 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import java.util.*;
+import java.net.*;
+import java.io.*;
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        InetAddress IPADDRESS = null;
 
-        PortTester portTester = new PortTester(); // This is creating an object of the class PortTester
-        PortTester portTester2 = new PortTester(); // This is creating another object of the class PortTester
 
-        portTester.testPortAndIPaddress("80", "127.0.0.1"); // This is calling the method testPortAndIPaddress()
-        portTester2.testPort("443"); // This is calling the method testPort()
-        portTester2.testIPaddress("127.0.0.1"); // This is calling the method testIPaddress()
 
-        portTester.printPortAndIPaddress("80", "127.0.0.1");
+        System.out.println("Enter the IP Address");
+        String IP = scanner.nextLine();
+        System.out.println("Please enter the port number");
+        int port = scanner.nextInt();
 
+       if (port < 0 || port >= 65535){
+           System.out.println("Invalid port number");
+           port = scanner.nextInt();
+       }
+       else {
+           System.out.println("Port is valid, checking...");
+       }
+
+        try {
+            IPADDRESS = InetAddress.getByName(IP);
+            System.out.println(IPADDRESS + " is valid");
         }
+        catch (UnknownHostException e) {
+            System.out.println("Invalid IP address");
+            System.exit(0);
+        }
+        PortTester tester = new PortTester(port, (Inet4Address) IPADDRESS);
+
+        tester.run();
+        System.out.println("Done");
+
+
+
+
+
+
+
+
+
+    }
     }

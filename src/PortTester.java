@@ -1,25 +1,35 @@
-public class PortTester {
+import java.security.Provider;
+import java.util.*;
+import java.net.*;
+
+public class PortTester implements Runnable{
 
     // Private variables
-    private String port = "No port specified";
-    private String ipAddress = "No IP address specified";
+    // These are final because they are not going to be changed
+    final int PORT;
+    // InetAddress can handle IPv4 and IPv6 or domain name
+    final private InetAddress IPADDRESS;
+
+    public PortTester(int port, Inet4Address ipAddress){
+        this.PORT = port;
+        this.IPADDRESS = ipAddress;
+    }
 
 
-    public void printPortAndIPaddress(String port, String ipAddress) {
-        System.out.println("Port: " + port + " IP Address: " + ipAddress + ", to be scanned");
-    }
-    // setters and getters
-    public void setPort(String port) {
-        port = port;
-    }
-    public void setIpAddress(String ipAddress) {
-        ipAddress = ipAddress;
-    }
-    public String getPort() {
-        return port;
-    }
-    public String getIpAddress() {
-        return ipAddress;
+    @Override
+    public void run() {
+        Socket socket = new Socket(); // Create a socket object
+        InetSocketAddress address = new InetSocketAddress(IPADDRESS, PORT); // Create an address object
+        try {
+            socket.connect(address, 500); // Attempt to Connect to the address - 2000ms is the timeout
+            System.out.println("Port " + PORT + " is open");
+        }
+        catch (Exception e) {
+            System.out.println("Port " + PORT + " is closed");
+        }
+
+
+        }
     }
 
-}
+
