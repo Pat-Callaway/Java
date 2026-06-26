@@ -2,6 +2,7 @@ import java.security.Provider;
 import java.util.*;
 import java.net.*;
 
+// This class implements Runnable - part of Java Standard library
 public class PortTester implements Runnable{
 
     // Private variables
