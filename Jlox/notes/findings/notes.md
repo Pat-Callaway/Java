@@ -30,3 +30,5 @@ If you have a debugger, get comfortable with it and step through your program as
 - First is binding or resolution
 - For each identifier we find out where the name(s) are defined and wire them together
 
+- Intermediate Representation (IR)
+  - An interface between the two languages (source code and one being compiled)
